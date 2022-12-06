@@ -42,36 +42,39 @@ io.on("connection", function (socket) {
   });
 
 });
-
+// Sive through request to find data.
 router.get('/sign-up', (request, response) => {
-
+  console.log(request, response)
 })
 
 async function create_user(email, password) {
-
   try {
     // Hashes are salted automatically.
     const p_hash = await argon2.hash(password);
     const e_hash = await argon2.hash(email)
+    write_file(e_hash, p_hash); 
   } catch(err) {
     // Create web popup for errors
       console.log(err);
   }
-
 }
 
 async function login_user(entered_email, entered_password) {
-
-  try {
-    if(await argon2.verify(stored_email, entered_email) && argon2.verify(stored_password, entered_password)) {
-      isAuthenticated = true;
-    } else {
-      isAuthenticated = false;
+  //user_list = read_file();
+  var user_list = ["email", "password"];
+  for (var index in user_list) {
+    try {
+      if(await argon2.verify(user_list[index], entered_email) && argon2.verify(user_list[index + 1], entered_password)) {
+        isAuthenticated = true;
+      } else {
+        isAuthenticated = false;
+      }
+    } catch {
+      if(err) {
+        console.log(err);
+      }
     }
-  } catch {
-    if(err) {
-      console.log(err);
-    }
+    index++
   }
   return isAuthenticated;
 }
@@ -80,13 +83,14 @@ function read_file() {
   // Fs readfile is async
   fs.readFile('/users.txt', (err, data) => {
     if(err) throw err;
-    user_list = data;
+    user_list = data.toString().split('\n');
   })
+  return user_list;
 }
 
-function write_file() {
-  fs.writeFile('/users.txt'), (err, data) => {
-    if(err) throw err; 
-    
-  }
+// Flags a+ means to append to file or create file if not exist.
+function write_file(hash_email, hash_pword) {
+    const stream = fs.createWriteStream('/users.txt', {flags:'a+'});
+    stream.write('\n' + hash_email + '\n' + hash_pword);
+    stream.end();
 }
