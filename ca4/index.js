@@ -61,7 +61,11 @@ async function create_user(email, password) {
 
 async function login_user(entered_email, entered_password) {
   //user_list = read_file();
-  var user_list = ["email", "password"];
+  var user_list = ["a@b.com", "pword"];
+  if (entered_email == user_list[1]) {
+    console.log('MATCHING')
+    return
+  }
   for (var index in user_list) {
     try {
       if(await argon2.verify(user_list[index], entered_email) && argon2.verify(user_list[index + 1], entered_password)) {
