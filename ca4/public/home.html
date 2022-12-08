@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket.io simple chat</title>
+    <link rel="stylesheet" href="css/demo.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #89cff0;">
+      <a class="navbar-brand" href="home.html"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAlMarkup">
+          <div class="navbar-nav">
+              <a class="nav-item nav-link active" href="home.html">Home</a>
+              <a class="nav-item nav-link" href="index.html">About Us</a>
+              <a class="nav-item nav-link" href="login.html">Login</a>
+              <a class="nav-item nav-link" href="sign-up.html">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <h1>
+        Home
+    </h1>
+
+    <div class="borders">
+
+        <p>
+            This website was built using node.js, JavaScript and HTML.
+            Node provides the boilerplate code with express and socket.
+            Node is modular in design as node package manager allows developers
+            to integrate other packages into their software for increased utility programatically and in design.
+            <br>
+            <br>
+            By using npm I've been able to implement Argon2, which is a hashing library that won the 2015 Password Hashing Competition.
+            There are two versions of this library, Argon2i and Argon2d.
+            <br>
+            <br>
+            Argon2i is optimised for side-channel attacks.
+            <br>
+            <br>
+            Argon2d is optimised for GPU cracking attacks.
+            <br>
+            <br>
+            I chose to use Argon2id which is a combination of both, literally in hashing, the first pass is Argon2i and the rest
+            of the passes use Argon2d.
+            <br>
+            <br>
+            This doesn't eliminate side-channel attacks but does significantly reduce the ease.
+            I had originally attempted to use scrypt which is deprecated, then I actually attempted bcrypt. I then settled 
+            for Argon2.
+        </p>
+    </div>
+    
+    </body>
+  
+</html>
